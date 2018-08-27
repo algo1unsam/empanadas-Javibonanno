@@ -59,9 +59,10 @@ object baigorria {
 		if (self.totalDeuda() > dinero) {
 			deuda -= dinero
 			dinero = 0
-		} else (self.totalDeuda() < dinero)
-		dinero -= deuda
-		deuda = 0
+		} else {
+			dinero -= deuda
+			deuda = 0
+		}
 	}
 
 }
@@ -75,3 +76,4 @@ object galvan {
 	}
 
 }
+
