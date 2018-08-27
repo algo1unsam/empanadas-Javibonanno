@@ -3,10 +3,51 @@ import empleados.*
 test "sueldo de Baigorria y de Gimenez" {
 	baigorria.venderEmpanada()
 	baigorria.venderEmpanada()
-	assert.equals(1530, baigorria.sueldo())
+	assert.equals(15030, baigorria.totalCobrado())
 	baigorria.venderEmpanada()
-	assert.equals(1545, baigorria.sueldo())
-	assert.equals(15000, gimenez.sueldo())
-	gimenez.sueldo(12000)
-	assert.equals(12000, gimenez.sueldo())
+	assert.equals(15045, baigorria.totalCobrado())
+	gimenez.cobrarSueldo()
+	assert.equals(15000, gimenez.totalCobrado())
+	gimenez.cobrarSueldo()
+	assert.equals(30000, gimenez.totalCobrado())
+}
+
+test "sueldo acumulado de gimenez" {
+	galvan.pagarA(gimenez)
+	gimenez.cobrarSueldo()
+	assert.equals(15000, gimenez.totalCobrado())
+}
+
+test "galvan le paga el sueldo a baigorria" {
+	galvan.pagarA(baigorria)
+	assert.equals(15000, baigorria.totalCobrado())
+}
+
+test "Baigorria tiene 15000 de sueldo, deuda y el dinero estan en 0" {
+	assert.equals(15000, baigorria.sueldo())
+	assert.equals(0, baigorria.totalDinero())
+	assert.equals(0, baigorria.totalDeuda())
+}
+
+test "Baigorria tiene 4000 de deuda y el dinero esta en 0" {
+	baigorria.gastar(4000)
+	assert.equals(4000, baigorria.totalDeuda())
+	assert.equals(0, baigorria.totalDinero())
+}
+
+test "Baigorria tiene 8000 mas de deuda y el dinero esta en 0" {
+	baigorria.gastar(4000)
+	baigorria.gastar(8000)
+	assert.equals(12000, baigorria.totalDeuda())
+	assert.equals(0, baigorria.totalDinero())
+}
+
+test "Baigorria cobra los 15000, paga toda su deuda y le sobran 3000" {
+	baigorria.gastar(4000)
+	baigorria.gastar(8000)
+	galvan.pagarA(baigorria)
+	baigorria.sueldo()
+	baigorria.pagarDeuda()
+	assert.equals(3000, baigorria.totalDinero())
+	assert.equals(0, baigorria.totalDeuda())
 }
