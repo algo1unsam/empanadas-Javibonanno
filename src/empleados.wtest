@@ -18,9 +18,10 @@ test "sueldo acumulado de gimenez" {
 	assert.equals(15000, gimenez.totalCobrado())
 }
 
-test "galvan le paga el sueldo a baigorria" {
+test "galvan le paga el sueldo a baigorria y el dinero de galvan pasa a 285000" {
 	galvan.pagarA(baigorria)
 	assert.equals(15000, baigorria.totalCobrado())
+	assert.equals(285000, galvan.dinero())
 }
 
 test "Baigorria tiene 15000 de sueldo, deuda y el dinero estan en 0" {
