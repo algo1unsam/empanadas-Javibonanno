@@ -46,7 +46,7 @@ test "Baigorria tiene 8000 mas de deuda y el dinero esta en 0" {
 test "Baigorria cobra los 15000, paga toda su deuda y le sobran 3000" {
 	baigorria.gastar(4000)
 	baigorria.gastar(8000)
-	galvan.pagarA(baigorria)
+	galvan.pagarA(baigorria)ñ
 	baigorria.totalCobrado()
 	baigorria.pagarDeuda()
 	assert.equals(3000, baigorria.totalDinero())

@@ -32,10 +32,8 @@ object baigorria {
 	}
 
 	method gastar(unDinero) {
-		if (dinero == 0) {
-			deuda += unDinero
-		} else if (dinero < unDinero) {
-			deuda = unDinero - dinero
+		if (dinero < unDinero) {
+			deuda += unDinero - dinero
 			dinero = 0
 		} else {
 			dinero -= unDinero
@@ -50,9 +48,7 @@ object baigorria {
 	}
 
 	method totalDeuda() {
-		if (deuda != 0) {
-			return deuda
-		} else return 0
+		return deuda
 	}
 
 	method pagarDeuda() {
