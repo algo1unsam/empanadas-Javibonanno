@@ -26,6 +26,9 @@ object baigorria {
 
 	method sueldo() = cantidadEmpanadasVendidas * montoPorEmpanada
 
+	// ¿este es un método de órden o de consulta?
+	// si es de consulta, debería devolver algo sin modificar nada
+	// si es órden, hace algo, realiza modificaciones pero no devuelve nada
 	method totalCobrado() {
 		dinero += self.sueldo()
 		return dinero
@@ -37,10 +40,16 @@ object baigorria {
 			dinero = 0
 		} else {
 			dinero -= unDinero
+			// no puede ser que tuviera deuda?
+			// es decir, si bien este gasto lo puede afrontar, 
+			// no puede ser que la haya quedado una dedua de antes??
 			deuda = 0
 		}
 	}
 
+	// con hacer return dinero no alcanza??
+	// el if por qué? no vale el valor guardado así como está?
+	// si dinero está en 0, devuelve 0
 	method totalDinero() {
 		if (dinero > 0) {
 			return dinero
